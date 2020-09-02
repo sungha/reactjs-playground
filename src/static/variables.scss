@@ -1,0 +1,18 @@
+// 사이트 전용 속성
+@import "~bootstrap/scss/functions";
+
+$sans-serif: "Roboto", "Noto Sans KR", sans-serif;
+$monospace: "Nanum Gothic Coding", monospace;
+$font-awesome: "FontAwesome", monospace;
+
+$minimum-width: 950px; // 줄어들 수 있는 최소 가로폭
+$maximum-width: $minimum-width; // 늘어날 수 있는 최대 가로폭
+
+$header-height: 40px; // 헤더영역 크기
+$sidebar-width: 220px; // 사이드바 가로폭
+$sidebar-shrink-width: 50px; // 사이드바 가로폭 축소큭기
+$sidemenu-parent-height: 32px; // 서브메뉴 대분류 크기
+$sidemenu-child-height: 26px; // 서브메뉴 소분류 크기
+
+$table-head-height: 21px; // 테이블 헤더 세로길이
+$table-body-height: 21px; // 테이블 바디 세로길이

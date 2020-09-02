@@ -1,0 +1,24 @@
+{
+  "code": "en",
+  "name": "English",
+  "translation": {
+    "author": {
+      "name": "Sungha Jun"
+    },
+    "menu": {
+      "home": "Home",
+      "profile": "Profile",
+      "blog": "Blog",
+      "test": "Test",
+      "theme": "Theme.Preview",
+      "login": "Login",
+      "simulation": "Simulation"
+    },
+    "term": {
+
+    },
+    "message": {
+      "hello": "Hello~"
+    }
+  }
+}

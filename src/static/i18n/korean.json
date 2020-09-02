@@ -1,0 +1,18 @@
+{
+  "code": "ko",
+  "name": "한국어",
+  "translation": {
+    "author": {
+      "name": "전성하"
+    },
+    "menu": {
+      "home": "홈",
+      "blog": "블로그",
+      "profile": "프로필",
+      "theme": "테마 미리보기",
+      "login": "로그인"
+    },
+    "hello": "안녕하살법",
+    "profile": "프로필"
+  }
+}

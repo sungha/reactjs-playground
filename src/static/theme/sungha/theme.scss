@@ -1,0 +1,511 @@
+@import "~bootstrap/scss/functions.scss";
+@import "~bootstrap/scss/variables.scss";
+@import "./variables";
+@import "../../variables.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "../common.scss";
+
+body {
+  background-color: #181818;
+}
+
+table {
+  @extend .table;
+  @extend .table-striped;
+}
+
+select, input {
+  @extend .form-control;
+  @extend .form-control-sm;
+}
+
+.text-monospace {
+  font-family: $font-family-monospace !important;
+}
+
+
+button, .btn {
+  @extend .btn;
+  @extend .btn-sm;
+}
+
+.progress-bar {
+  @extend .progress-bar-striped;
+}
+
+
+.table-responsive {
+  padding: 0;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+/** 일반(목록) 테이블 */
+.table {
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 0;
+  color: #333;
+  border-top: 2px solid #000;
+
+  &.list {
+    @extend .table-hover;
+
+    input[type=checkbox], input[type=radio] {
+      position: relative;
+      top: 3px;
+    }
+  }
+
+  caption {
+    caption-side: top;
+    color: #333 !important;
+    font-weight: bold;
+    font-size: 13px;
+    padding-bottom: 1px;
+    padding-left: 14px;
+    letter-spacing: -2px;
+
+    background-image: radial-gradient(#000 2.5px, transparent 0%);
+    background-position: 0 8px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+  }
+
+  thead th,
+  tbody td,
+  tfoot td {
+    white-space: nowrap;
+    overflow: hidden;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #b0b0b0;
+  }
+
+  th {
+    background-color: transparent;
+    color: #000;
+    text-align: center;
+    vertical-align: middle;
+    height: $table-head-height;
+    line-height: $table-head-height;
+    padding: 0 4px;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: -2px;
+
+    &.required {
+      &:after {
+        content: '*';
+        font-size: 14px;
+        margin-left: 4px;
+        color: #f74730;
+      }
+    }
+  }
+
+  td {
+    height: $table-body-height;
+    line-height: $table-body-height;
+    padding: 0 5px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody th {
+    text-align: left;
+  }
+
+  &.table-hover, &.list {
+    @extend .table-striped;
+
+    tbody tr:hover {
+      td {
+        color: #000;
+        background-color: rgba($primary, 0.1);
+        cursor: pointer;
+      }
+    }
+
+    // 컬럼 크기 확인용
+    //thead tr th {
+    //&:nth-child(2n) {
+    //  border-bottom: 2px solid #ffbaba;
+    //}
+    //&:nth-child(2n+1) {
+    //  border-bottom: 2px solid #a3a3ff;
+    //}
+    //}
+
+  }
+
+
+}
+
+
+table.fancytree-container tbody tr td {
+  .fancytree-checkbox, .fancytree-expander, .fancytree-icon {
+    position: relative;
+    top: 6px;
+  }
+}
+
+
+.form-row {
+  margin-top: 2px;
+}
+
+
+/** 상세보기 테이블 */
+.table.summary {
+  margin-bottom: 8px;
+  border-top: 2px solid #a7ca7f;
+  border-bottom: 1px solid #a7ca7f;
+  //min-width: 782px !important;
+  //max-width: 782px !important;
+  //table-layout: unset;
+  width: 100%;
+
+  tbody + tbody {
+    border-top: 1px solid #dee2e6;
+  }
+
+  th, td {
+    text-align: left;
+    border: 1px solid #e7eaee;
+    padding-top: 3px;
+  }
+
+  th {
+    color: #68913c;
+    background-color: #edf4e6;
+    font-weight: normal;
+    padding-left: 6px;
+    letter-spacing: -1px;
+
+    &[rowspan] {
+      //border-right: 1px solid #dedede;
+      text-align: center;
+    }
+  }
+
+
+  .input-group, .input-group-sm {
+    input, select {
+      flex: none !important;
+    }
+  }
+
+  label {
+    height: 30px;
+    margin: 0;
+    line-height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 12px;
+  }
+
+  input, select {
+    @extend .form-control;
+    @extend .form-control-sm;
+    font-size: 11px;
+    padding: 1px 2px;
+    height: 20px;
+    margin-bottom: 2px;
+
+    &[readonly], &:disabled {
+      background-color: #dedede;
+      border: 1px solid rgba(0, 0, 0, .2);
+    }
+
+    &[type=file] {
+      padding: 0;
+    }
+  }
+
+  select {
+    letter-spacing: -1px !important;
+    padding: 1px 4px 0 4px;
+  }
+
+  input, textarea {
+    &.currency {
+      text-align: right;
+    }
+  }
+
+
+  button, .btn {
+    @extend .btn;
+    @extend .btn-sm;
+
+    &:not(.btn-danger) {
+      @extend .btn-light;
+    }
+
+    &.btn-danger {
+      @extend .btn-danger;
+    }
+
+    max-width: 120px;
+    border-radius: 3px !important;
+    height: 20px;
+    position: relative;
+    top: -1px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    line-height: 1em;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 0.1rem #fff inset !important;
+    font-size: 11px !important;
+    letter-spacing: -1px;
+
+    i.fa {
+      font-size: 14px;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  textarea {
+    @extend .form-control;
+    @extend .form-control-sm;
+    font-size: 12px;
+    //font-family: "돋움" ,"Verdana" !important;
+
+    width: 100% !important;
+    height: 120px;
+    margin: 4px 0;
+    padding: 4px;
+    background-color: transparent;
+    //border: none;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    text-wrap: none;
+    word-break: break-all;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  td {
+    input[type=text], select {
+      &:only-child {
+        width: 100% !important;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+form {
+  .input-group-append {
+    .btn {
+      border-radius: 3px !important;
+      margin-left: 2px !important;
+
+      &:first-child {
+        margin-left: 4px !important;
+      }
+    }
+  }
+}
+
+form label {
+  color: #000;
+
+  // 필수항목엔 빨간색 * 표시
+  &.required {
+    &:after {
+      content: '*';
+      font-size: 14px;
+      margin-left: 4px;
+      color: #f74730;
+    }
+  }
+}
+
+form.form-inline .form-group {
+  margin-right: 10px;
+}
+
+@media screen {
+  .modal-content {
+    border-radius: 10px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3);
+
+    .modal-header {
+      border-bottom: 1px solid #d6d6d6;
+      background-color: #f0f0f0;
+      border-radius: 10px 10px 0 0;
+      padding: 6px 10px;
+      font-family: "Malgun Gothic", sans-serif;
+
+      button {
+        box-shadow: none !important;
+      }
+
+      .modal-title {
+        color: #000;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
+    .modal-body {
+    }
+
+    .modal-footer {
+      border-top: 1px solid #d6d6d6;
+      background-color: #f0f0f0;
+      border-radius: 0 0 10px 10px;
+      padding: 6px 10px;
+
+      .btn-toolbar {
+        .btn-group {
+          &:not(:last-child) {
+            margin-right: 10px;
+          }
+
+          .btn:not(:last-child) {
+            margin-right: 4px;
+          }
+
+          .btn {
+            min-width: 80px !important;
+          }
+        }
+      }
+    }
+  }
+  .modal-backdrop {
+    background: rgba(0, 0, 0, .6);
+
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+.tooltip {
+  font-size: 11px !important;
+}
+
+:not(.modal) {
+  button, .btn {
+    border-radius: 3px !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px #fff inset !important;
+    letter-spacing: -1px;
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+}
+
+.modal .modal-footer {
+  button, .btn {
+    min-width: 80px;
+  }
+}
+
+
+pre {
+  font-size: .75rem;
+}
+
+.badge {
+  font-size: 11px;
+  letter-spacing: -1px;
+}
+
+
+/**
+ * 데이트피커
+ */
+div.datepicker {
+  background-color: #fafafa;
+  color: #3d3d3d;
+
+  .datepicker-days {
+    table {
+      thead th, tbody td {
+        padding: 0;
+        width: 22px;
+        height: 22px;
+      }
+
+      thead {
+        th.dow {
+          //background-color:#0a2f54
+        }
+      }
+
+      tbody {
+        td {
+        }
+      }
+    }
+  }
+}
+
+input.datepicker {
+  width: 62px !important;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+
+
+.navbar-brand {
+  padding: 0;
+  margin: 0 16px 0 11px;
+
+  img {
+    width: 144px;
+    height: 31px;
+  }
+}
+
+/** 탭 */
+.nav.nav-tabs {
+  border-bottom: 1px solid #9acbfc;
+
+  li {
+    @extend .nav-item;
+
+    &:first-child {
+      margin-left: 4px;
+    }
+
+    a {
+      @extend .nav-link;
+      padding: 3px 14px;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+img.img-thumbnail {
+  position: relative;
+
+  &:before {
+    z-index: 9999;
+    content: 'XsSDFS';
+    display: block;
+    position: absolute;
+    left: 10px; top: 10px;
+    width: 100px;
+    height: 10px;
+    background-color: #00b217;
+  }
+
+  &.online {
+    border: 3px solid #00b217;
+  }
+}

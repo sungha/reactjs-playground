@@ -1,0 +1,25 @@
+@import "../variables.scss";
+
+@import "~font-awesome/scss/variables";
+
+.#{$fa-css-prefix}-naver:before { content: 'N'; }
+.#{$fa-css-prefix}-kakao:before { content: 'K'; }
+.#{$fa-css-prefix}-line:before { content: 'L'; }
+
+#language-selector {
+  position: absolute;
+  right: 100px;
+  top: 0;
+  width: 60px;
+}
+#theme-selector {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+

@@ -1,17 +1,36 @@
-import React from 'react'
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
+
+import React, { useReducer } from 'react'
+import { createStore } from 'redux'
 import ReactDOM from 'react-dom'
-import './static/index.css'
-import App from './static/App'
 import * as serviceWorker from './static/serviceWorker'
 
+import { Root } from './static/view/Root'
+
+import 'jquery'
+import 'bootstrap'
+import 'popper.js/dist/esm/popper'
+import 'select2'
+
+import 'holderjs'
+
+import './static/theme/sungha/theme.scss'
+
+import './static/index.scss'
+
+const store = createStore(() => {
+  return {
+    number: 0
+  }
+})
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Root store={store} />,
+  document.getElementById('root'),
+  () => {
+    // DO NOTHING. (YET)
+  }
 )
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()

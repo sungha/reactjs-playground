@@ -1,0 +1,306 @@
+@import "../variables";
+@import "~bootstrap/scss/functions";
+
+:root {
+}
+
+
+
+
+body.xxxx {
+
+  #header {
+    background-color: #fff;
+    color: white;
+    height: $header-height;
+    margin-right: 20px;
+
+    .navbar-brand {
+      background-image: url(../img/logo.png);
+      background-size: contain;
+      width: 140px;
+      height: 29px;
+      background-repeat: no-repeat;
+    }
+
+    #gnb {
+      color: #000;
+      padding: 4px;
+    }
+
+    #mainmenu {
+      font-family: "Malgun Gothic", sans-serif;
+
+      li.nav-item {
+        position: relative;
+        background-color: #7d4e2e;
+        background-image: linear-gradient(#7d4e2e, #4b2f1b);
+
+        &:first-child {
+          border-radius: 6px 0 0 6px;
+          height: 32px;
+        }
+
+        &:last-child {
+          border-radius: 0 6px 6px 0;
+          height: 32px;
+        }
+
+        &:not(:first-child):before, &:not(:last-child):after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 10px;
+          width: 1px;
+          height: 12px;
+        }
+
+        &:not(:first-child):before {
+          float: left;
+          left: -1px;
+          background-color: #8b7f7f;
+        }
+
+        &:not(:last-child):after {
+          float: right;
+          right: 1px;
+          background-color: #342b2b;
+        }
+
+        a.nav-link {
+          color: #d2d2d2;
+          padding: 5px 24px 7px 24px;
+          margin: auto;
+          font-size: 13px;
+          font-weight: bold;
+          letter-spacing: -1px;
+          text-shadow: 0 0 2px rgba(0, 0, 0, .75);
+        }
+
+        &:hover {
+          a.nav-link {
+            color: #c3ffc1;
+            text-shadow: 0 0 4px rgba(255, 255, 255, .8);
+          }
+        }
+
+        &.active {
+          a.nav-link {
+            color: #9fffaf;
+          }
+        }
+      }
+    }
+
+    .inner {
+      position: relative;
+      //width: 1200px;
+
+      #logout-button {
+        position: absolute;
+        right: 20px;
+        top: 80px;
+      }
+
+      p {
+        position: absolute;
+        right: 20px;
+        top: 132px;
+        color: #333;
+
+        .username {
+          font-weight: bold;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  #body {
+    display: flex;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    //width: 1200px;
+
+    #sidebar {
+      background: linear-gradient(#18AB8F, #8BC54A);
+      color: #000;
+      width: $sidebar-width;
+      min-width: $sidebar-width;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      overflow: visible;
+      padding-top: 10px;
+
+      #schedule {
+        margin: 8px 0 4px 4px;
+      }
+
+      .section {
+        font-weight: bold;
+        padding-left: 16px;
+        margin: 8px 0 -8px 0;
+        color: #951d1a;
+      }
+
+      #submenu, .submenu {
+        padding: 4px;
+        margin: 10px 6px 10px 6px;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        background: #fff;
+
+        li a .info {
+          margin-left: 4px;
+          color: #a51a1a;
+          font-size: 11px;
+          font-weight: normal;
+          letter-spacing: -.2px;
+        }
+
+        > li {
+          list-style: none;
+          margin: -1px 0;
+          padding: 0;
+          cursor: pointer;
+          border-top: 1px solid #aeaeae;
+          border-bottom: 1px solid #aeaeae;
+
+          > a {
+            font-family: "Malgun Gothic", sans-serif;
+            text-decoration: none;
+            color: #000;
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: -2px;
+            height: $sidemenu-parent-height;
+            line-height: $sidemenu-parent-height;
+            padding-left: 8px;
+            padding-right: 8px;
+            clear: right;
+
+
+            &:after {
+              display: block;
+              float: right;
+              color: #373737;
+              font-family: "FontAwesome", sans-serif;
+              content: "\f077";
+            }
+
+            &:hover, &:not(.collapsed) {
+              background-color: darken(#000, 15%);
+              color: #fff;
+
+              &:after {
+                color: #fff;
+                content: "\f078";
+              }
+            }
+
+            &:not([data-toggle="collapse"]) {
+              &:after {
+                content: "" !important;
+              }
+            }
+          }
+
+          > ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            > li {
+              margin: 0;
+              padding: 0;
+              cursor: pointer;
+
+              > a {
+                color: #3d3d3d;
+                text-decoration: none;
+                font-size: 13px;
+                font-family: "Malgun Gothic", sans-serif;
+                letter-spacing: -1px;
+                display: block;
+                text-align: left;
+                height: $sidemenu-child-height;
+                line-height: $sidemenu-child-height;
+                padding-left: 20px;
+                border-left: 3px solid transparent;
+
+                background-image: radial-gradient(#000 2.5px, transparent 0%);
+                background-position: 0 0;
+                background-size: $sidemenu-child-height $sidemenu-child-height;
+                background-repeat: no-repeat;
+
+                //.current, &:not(.collapsed) {
+                //  background-color: lighten($secondary, 15%);
+                //  color: darken($secondary, 40%);
+                //}
+
+                &:hover {
+                  background-color: #e8e8e8;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    #sidebar {
+      .sosong-link {
+        margin: 0 0 0 6px;
+
+        img {
+          width: 148px;
+          height: 31px;
+        }
+      }
+    }
+
+    #content {
+      background-color: #fff;
+      padding: 6px 6px 0;
+      overflow: hidden;
+      flex: 1;
+
+      h1 {
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+        margin-bottom: 22px;
+      }
+
+      // 현재 위치
+      .breadcrumb {
+        color: #888;
+        margin-bottom: 8px;
+        padding: 3px 8px;
+        border: 1px solid rgba(0, 0, 0, .1);
+        background-image: linear-gradient(#ddd, #eee);
+      }
+
+
+      // 인덱스화면 대시보드
+      #dashboard {
+        max-width: 720px;
+
+        .col {
+          min-height: 200px;
+          margin-bottom: 14px;
+        }
+      }
+
+    }
+  }
+}
+
+
+
+

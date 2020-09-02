@@ -1,43 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="utf-8" />
+  <title>SUNGHA.KR</title>
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <style type="text/css">
+    #root {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    #loading {
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #181818;
+    }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    .loader {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+    / / background: linear-gradient(#f07e6e, #5ad1cd, #84cdfa);
+      animation: animate .8s linear infinite;
+    }
+
+    .loader span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+      opacity: .8;
+    }
+
+    .loader span:nth-child(1) {
+      filter: blur(5px);
+    }
+
+    .loader span:nth-child(2) {
+      filter: blur(10px);
+    }
+
+    .loader span:nth-child(3) {
+      filter: blur(15px);
+    }
+
+    .loader span:nth-child(4) {
+      filter: blur(20px);
+    }
+
+    .loader:after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background: #f1f1f1;
+      border: solid white 10px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body data-theme="sungha" data-theme-scheme="dark">
+<div id="loading">
+  <div class="loader">
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+  </div>
+</div>
+<div id="root"></div>
+<script>
+  (function() {
+    const body = document.querySelector('body')
+    const loader = document.querySelector('#loading')
+
+    body.classList.add('loading')
+
+    document.addEventListener('readystatechange', function() {
+      if (document.readyState === 'complete') {
+        body.classList.add('loaded')
+        loader.classList.add('animate__animated', 'animate__fadeOutUp', 'animate__fast')
+        setTimeout(function() {
+          // body.removeChild(loader)
+          body.classList.remove('loading', 'loaded')
+        }, 200)
+      }
+    })
+  })()
+</script>
+<script>
+  window.frontend = window.frontend || {
+    mode: 'dark'
+  }
+  const ua = window.navigator.userAgent
+  const msie = ua.indexOf('MSIE ')
+
+  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv:11\./)) {
+    console.log('\nSUNGHA.KR v2020.08 (https://sungha.kr/)\n')
+  } else {
+    console.log(...[`\n%c %c  SUNGHA.KR v2020.08  %c %c  https://sungha.kr/  DARK MODE: ${window.frontend.mode === 'dark'}\n`, 'background: #eee; padding:3px 0;', 'color: #030307; background: #b3ff00; padding:3px 0;', 'background: #eee; padding:3px 0;', 'background: transparent; padding:3px 0;'])
+    window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', (e) => {
+      window.frontend.mode = e.matches ? 'dark' : 'light'
+    })
+  }
+</script>
+</body>
 </html>
