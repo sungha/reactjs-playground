@@ -1,0 +1,207 @@
+{
+  "name": "sungha.kr",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Sungha Jun <sh@sungha.kr> (https://sungha.kr)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.18.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && exit 0",
+    "serve": "serve -s build",
+    "analyze": "cra-bundle-analyzer"
+  },
+  "proxy": "http://localhost:8080",
+  "homepage": "https://sungha.kr",
+  "dependencies": {
+    "@dicebear/avatars": "latest",
+    "@dicebear/avatars-human-sprites": "latest",
+    "@openfonts/nanum-gothic-coding_korean": "latest",
+    "@openfonts/nanum-gothic-coding_latin": "latest",
+    "@openfonts/noto-sans-kr_korean": "latest",
+    "@openfonts/noto-sans-kr_latin": "latest",
+    "@openfonts/roboto_latin": "latest",
+    "@inlet/react-pixi": "latest",
+    "alertifyjs": "latest",
+    "animate.css": "latest",
+    "axios": "latest",
+    "bootstrap": "latest",
+    "cleave.js": "latest",
+    "devicon": "latest",
+    "facesjs": "latest",
+    "font-awesome": "latest",
+    "gsap": "latest",
+    "holderjs": "latest",
+    "hotkeys-js": "latest",
+    "i18next": "latest",
+    "jquery": "latest",
+    "js-cookie": "latest",
+    "lodash": "latest",
+    "moment": "latest",
+    "pixi.js": "latest",
+    "popper.js": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-app-polyfill": "latest",
+    "react-bootstrap": "latest",
+    "react-dom": "latest",
+    "react-i18next": "latest",
+    "react-lorem-ipsum": "latest",
+    "react-redux": "latest",
+    "react-router": "latest",
+    "react-router-dom": "latest",
+    "react-router-prop-types": "latest",
+    "redux": "latest",
+    "remixicon": "latest",
+    "select2": "latest",
+    "select2-theme-bootstrap4": "latest",
+    "uuid": "latest",
+    "vegas": "latest",
+    "voca": "latest"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "latest",
+    "babel-eslint": "latest",
+    "cra-bundle-analyzer": "latest",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-import-helpers": "latest",
+    "eslint-plugin-jsx-a11y": "latest",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-react": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "http-proxy-middleware": "latest",
+    "husky": "latest",
+    "node-sass": "latest",
+    "prettier": "latest",
+    "pretty-quick": "latest",
+    "react-scripts": "latest",
+    "serve": "latest"
+  },
+  "browserslist": {
+    "production": [
+      "ie > 9",
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "ie > 9",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "post-merge": "npm install"
+    }
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true,
+      "mocha": true
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true,
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "ignorePatterns": [
+      "**/static/legacy/*.js"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "airbnb",
+      "prettier"
+    ],
+    "globals": {
+      "window": "readonly",
+      "location": "readonly",
+      "document": "readonly",
+      "navigator": "readonly",
+      "$": "readonly",
+      "jQuery": "readonly"
+    },
+    "rules": {
+      "react/jsx-filename-extension": [
+        "warn",
+        {
+          "extensions": [
+            ".js"
+          ]
+        }
+      ],
+      "react/jsx-closing-bracket-location": "off",
+      "quotes": [
+        "warn",
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": [
+        "warn",
+        "never"
+      ],
+      "no-alert": [
+        "warn"
+      ],
+      "no-console": "off",
+      "consistent-return": "off",
+      "global-require": "off",
+      "import/no-dynamic-require": "off",
+      "import/prefer-default-export": "off",
+      "no-unused-vars": "warn",
+      "no-shadow": "off",
+      "no-param-reassign": [
+        2,
+        {
+          "props": false
+        }
+      ],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_embedded",
+            "_links"
+          ]
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "none",
+    "singleQuote": true,
+    "jsxBracketSameLine": true,
+    "tabWidth": 2,
+    "printWidth": 100
+  }
+}

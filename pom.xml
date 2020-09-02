@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.3.3.RELEASE</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>kr.sungha</groupId>
+  <artifactId>reactjs-playground</artifactId>
+  <version>1.0.0.Final</version>
+  <packaging>war</packaging>
+
+  <name>REACTJS-PLAYGROUND</name>
+  <organization>
+    <name>steelheart*Rocks!</name>
+    <url>https://sungha.kr</url>
+  </organization>
+
+  <url>http://localhost:7777</url>
+  <inceptionYear>2020</inceptionYear>
+
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/sungha/reactjs-playground/issues</url>
+  </issueManagement>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <start-class>kr.sungha.website.SunghaApplication</start-class>
+
+    <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+
+    <node.version>v12.18.3</node.version>
+    <node.install.directory>${user.home}/node/${node.version}</node.install.directory>
+
+    <maven.test.skip>true</maven.test.skip>
+    <maven.it.skip>true</maven.it.skip>
+
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm 'UTC'</maven.build.timestamp.format>
+    <timestamp>${maven.build.timestamp}</timestamp>
+
+    <lombok.version>1.18.10</lombok.version>
+
+    <spring.version>5.2.8.RELEASE</spring.version>
+    <spring.cloud.version>Hoxton.SR7</spring.cloud.version>
+    <poi.version>4.1.2</poi.version>
+    <hibernate.search.version>5.11.5.Final</hibernate.search.version>
+    <jackson.version>2.11.2</jackson.version>
+    <querydsl.version>4.3.1</querydsl.version>
+    <oracle.version>19.3.0.0</oracle.version>
+    <mysql.version>8.0.21</mysql.version>
+    <h2.version>1.4.200</h2.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.0.0-M3</version>
+          <executions>
+            <execution>
+              <id>enforce</id>
+              <inherited>false</inherited>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireJavaVersion>
+                    <version>1.8</version>
+                  </requireJavaVersion>
+                  <requireMavenVersion>
+                    <version>3.6.3</version>
+                  </requireMavenVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <excludeDefaultDirectories>true</excludeDefaultDirectories>
+            <filesets>
+              <fileset>
+                <directory>${project.build.directory}</directory>
+                <followSymlinks>false</followSymlinks>
+                <includes>
+                  <include>**/*</include>
+                </includes>
+              </fileset>
+            </filesets>
+            <failOnError>false</failOnError>
+          </configuration>
+          <executions>
+            <execution>
+              <id>auto-clean</id>
+              <phase>initialize</phase>
+              <goals>
+                <goal>clean</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <compilerVersion>1.8</compilerVersion>
+            <source>1.8</source>
+            <target>1.8</target>
+            <compilerArgs>
+              <arg>-Xlint:all</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+            <rulesUri>file:///${project.basedir}/config/version-rules.xml</rulesUri>
+            <excludes>
+              <exclude>${project.groupId}:*</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.1.2</version>
+          <configuration>
+            <excludeGroupIds>${project.groupId}</excludeGroupIds>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.0.0-M1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.3.1</version>
+          <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.9.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>3.0.0</version>
+          <configuration>
+            <!--            <stylesheet>${project.build.directory}/static/site/</stylesheet>-->
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.1.1</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>8.35</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <failOnViolation>false</failOnViolation>
+            <failsOnError>false</failsOnError>
+            <enableRSS>false</enableRSS>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.13.0</version>
+          <configuration>
+            <rulesets>
+              <ruleset>config/pmd.xml</ruleset>
+            </rulesets>
+            <failOnViolation>false</failOnViolation>
+            <excludes>
+              <exclude>**/entity/Q*</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <offline>true</offline>
+            <outputDirectory>${project.build.directory}/static/site</outputDirectory>
+            <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+          </configuration>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+  <reporting>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <configuration>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <inherited>false</inherited>
+            <reports>
+              <report>summary</report>
+              <report>dependencies</report>
+              <report>plugins</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+    </plugins>
+  </reporting>
+
+</project>
