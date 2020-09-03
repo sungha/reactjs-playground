@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}" xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 http://maven.apache.org/xsd/decoration-1.8.0.xsd">
+
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.9</version>
+  </skin>
+
+  <body>
+
+    <head>
+      <![CDATA[
+        <link rel="stylesheet" type="text/css" href="../vendors.css" />
+        <link rel="stylesheet" type="text/css" href="./report.css" />
+      ]]>
+    </head>
+
+    <!--        <menu ref="reports"/>-->
+    <menu name="Project Reports">
+      <item name="Summary" href="./summary.html" />
+      <item name="Jar Dependencies" href="./dependencies.html" />
+      <item name="Maven Plugins" href="./plugins.html" />
+    </menu>
+    <menu name="Reference">
+      <item name="Development Guide" href="./guide.html" />
+    </menu>
+    <menu name="Java Reports">
+      <item name="Spotbugs" href="./spotbugs.html" />
+      <item name="Checkstyle" href="./checkstyle.html" />
+      <item name="PMD" href="./pmd.html" />
+      <item name="CPD" href="./cpd.html" />
+      <item name="Tag List" href="./taglist.html" />
+      <!--            <item name="Surefire Report" href="./surefire-report.html"/>-->
+      <!--            <item name="Test Coverage" href="./jacoco/index.html"/>-->
+      <item name="Source Xref" href="./xref/index.html" />
+    </menu>
+    <menu name="Javascript Reports">
+      <item name="Dependency Report" href="./bundle.html" />
+      <item name="ESLint Report" href="./eslint.html" />
+    </menu>
+
+    <footer>
+      <![CDATA[
+        <script type="text/javascript" src="../vendors.js"></script>
+        <script type="text/javascript" src="./report.js"></script>
+      ]]>
+    </footer>
+
+  </body>
+
+</project>

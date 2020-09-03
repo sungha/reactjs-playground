@@ -1,0 +1,22 @@
+# ======================================
+# 로컬 개발 환경
+# ======================================
+server:
+  error:
+    include-stacktrace: always
+spring:
+  jpa:
+    database: H2
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+logging:
+  level:
+    application: DEBUG
+    kr.sungha.quasar: DEBUG
+    kr.sungha.website: DEBUG
+app:
+  local: true

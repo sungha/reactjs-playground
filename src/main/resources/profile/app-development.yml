@@ -1,0 +1,24 @@
+# ======================================
+# 개발계 환경
+# ======================================
+spring:
+  jpa:
+    database: H2
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+  http:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+      location: /files
+logging:
+  level:
+    application: DEBUG
+    kr.sungha.quasar: DEBUG
+    kr.sungha.website: DEBUG
+app:
+  development: true

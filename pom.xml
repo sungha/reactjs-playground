@@ -16,6 +16,8 @@
   <packaging>war</packaging>
 
   <name>REACTJS-PLAYGROUND</name>
+  <description>혼자 놀기</description>
+
   <organization>
     <name>steelheart*Rocks!</name>
     <url>https://sungha.kr</url>
@@ -31,9 +33,9 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <start-class>kr.sungha.website.SunghaApplication</start-class>
+    <start-class>kr.sungha.ReactJsPlaygroundApplication</start-class>
 
-    <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+    <spring.boot.version>${project.parent.version}</spring.boot.version>
 
     <node.version>v12.18.3</node.version>
     <node.install.directory>${user.home}/node/${node.version}</node.install.directory>
@@ -76,7 +78,282 @@
     </dependencies>
   </dependencyManagement>
 
+  <dependencies>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <optional>true</optional>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-websocket</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.glassfish</groupId>
+          <artifactId>jakarta.el</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-jdbc</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-rest-hal-explorer</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-oauth2-client</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.11</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.querydsl</groupId>
+      <artifactId>querydsl-jpa</artifactId>
+      <version>${querydsl.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-rest</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-search-orm</artifactId>
+      <version>${hibernate.search.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>3.4.5</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.oracle.ojdbc</groupId>
+      <artifactId>ojdbc8</artifactId>
+      <version>${oracle.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-config</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-config-server</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-compress</artifactId>
+      <version>1.20</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.14</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.11</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>4.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>logging-interceptor</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-joda</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+
+  </dependencies>
+
+
   <build>
+
+    <finalName>${project.artifactId}</finalName>
+
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.yml</include>
+          <include>**/banner.txt</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <excludes>
+          <exclude>**/*.yml</exclude>
+          <exclude>**/banner.txt</exclude>
+        </excludes>
+      </resource>
+    </resources>
+
+
     <pluginManagement>
       <plugins>
         <plugin>
@@ -128,6 +405,61 @@
               <goals>
                 <goal>clean</goal>
               </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>com.mysema.maven</groupId>
+          <artifactId>apt-maven-plugin</artifactId>
+          <version>1.1.3</version>
+          <configuration>
+            <sourceEncoding>UTF-8</sourceEncoding>
+            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+            <processors>
+              <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+              <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+            </processors>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>com.querydsl</groupId>
+              <artifactId>querydsl-apt</artifactId>
+              <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.querydsl</groupId>
+              <artifactId>querydsl-jpa</artifactId>
+              <classifier>apt</classifier>
+              <version>${querydsl.version}</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <phase>generate-sources</phase>
+              <goals>
+                <goal>process</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+            <execution>
+              <id>add-sources</id>
+              <phase>generate-sources</phase>
+              <goals>
+                <goal>add-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>${project.build.directory}/generated-sources</source>
+                </sources>
+              </configuration>
             </execution>
           </executions>
         </plugin>
@@ -219,6 +551,41 @@
         </plugin>
 
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>taglist-maven-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>
+            <xrefLocation>${project.build.directory}/site/xref</xrefLocation>
+            <tagListOptions>
+              <tagClasses>
+                <tagClass>
+                  <displayName>Todo Work</displayName>
+                  <tags>
+                    <tag>
+                      <matchString>TODO</matchString>
+                      <matchType>ignoreCase</matchType>
+                    </tag>
+                    <tag>
+                      <matchString>FIXME</matchString>
+                      <matchType>exact</matchType>
+                    </tag>
+                  </tags>
+                </tagClass>
+                <tagClass>
+                  <displayName>Deprecated</displayName>
+                  <tags>
+                    <tag>
+                      <matchString>@deprecated</matchString>
+                      <matchType>ignoreCase</matchType>
+                    </tag>
+                  </tags>
+                </tagClass>
+              </tagClasses>
+            </tagListOptions>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>3.13.0</version>
@@ -234,12 +601,42 @@
         </plugin>
 
         <plugin>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+          <version>4.0.4</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.github.spotbugs</groupId>
+              <artifactId>spotbugs</artifactId>
+              <version>4.1.2</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <failOnError>false</failOnError>
+            <effort>Max</effort>
+            <threshold>Medium</threshold>
+            <skipEmptyReport>true</skipEmptyReport>
+            <xmlOutput>true</xmlOutput>
+            <includeFilterFile>${project.basedir}/config/spotbugs-include.xml</includeFilterFile>
+            <excludeFilterFile>${project.basedir}/config/spotbugs-exclude.xml</excludeFilterFile>
+            <xrefLocation>${project.build.directory}/site/xref</xrefLocation>
+            <plugins>
+              <plugin>
+                <groupId>com.h3xstream.findsecbugs</groupId>
+                <artifactId>findsecbugs-plugin</artifactId>
+                <version>1.10.1</version>
+              </plugin>
+            </plugins>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.1.0</version>
           <configuration>
             <offline>true</offline>
-            <outputDirectory>${project.build.directory}/static/site</outputDirectory>
+            <outputDirectory>${project.build.directory}/site</outputDirectory>
             <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
           </configuration>
         </plugin>
@@ -266,6 +663,16 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>com.mysema.maven</groupId>
+        <artifactId>apt-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
       </plugin>
 
       <plugin>
@@ -302,6 +709,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
       </plugin>
 
       <plugin>

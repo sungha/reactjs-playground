@@ -1,0 +1,22 @@
+info:
+  name: reactjs-playground
+  description: APP
+spring:
+  application:
+    name: app
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    include:
+      - native
+  cloud:
+    config:
+      fail-fast: true
+      server:
+        bootstrap: true
+        prefix: /config
+        native:
+          search-locations:
+            - classpath:/config
+            - classpath:/profile
+            - file:///profile

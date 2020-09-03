@@ -1,0 +1,19 @@
+# ======================================
+# 운영계 환경
+# ======================================
+spring:
+  jpa:
+    database: H2
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+logging:
+  level:
+    application: INFO
+    kr.sungha.quasar: INFO
+    kr.sungha.website: INFO
+app:
+  production: true
