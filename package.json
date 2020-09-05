@@ -65,7 +65,7 @@
     "@babel/plugin-syntax-dynamic-import": "latest",
     "babel-eslint": "latest",
     "cra-bundle-analyzer": "latest",
-    "eslint": "^6.8.0",
+    "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-import": "latest",
