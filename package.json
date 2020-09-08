@@ -5,7 +5,7 @@
   "author": "Sungha Jun <sh@sungha.kr> (https://sungha.kr)",
   "license": "MIT",
   "engines": {
-    "node": ">=12.18.2"
+    "node": ">=12.18.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -157,6 +157,7 @@
         }
       ],
       "react/jsx-closing-bracket-location": "off",
+      "react/no-unused-prop-types": "off",
       "quotes": [
         "warn",
         "single",

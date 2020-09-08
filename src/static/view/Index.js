@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import * as app from '../lib/app'
+// import * as app from '../lib/app'
 
 export const Index = () => {
   const [posts, setPosts] = useState([])

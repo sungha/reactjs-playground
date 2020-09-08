@@ -10,10 +10,12 @@ import { ThemePreview } from './ThemePreview'
 import { Test } from './Test'
 import { PixiTest } from '../view/pilot/pixi/PixiTest'
 
-import i18n, {path} from '../i18n'
+import {path} from '../i18n'
 
 
-export const Default = ({match}) => {
+export const Default = (match) => {
+  console.log(match)
+
   return (
     <>
       <div id="app">
@@ -40,3 +42,4 @@ export const Default = ({match}) => {
 Default.propTypes = {
   match: require('react-router-prop-types').match.isRequired
 }
+

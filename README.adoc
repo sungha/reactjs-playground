@@ -1,6 +1,6 @@
 = REACTJS-PLAYGROUND
 
-image:https://github.com/sungha/reactjs-playground/workflows/build/badge.svg[]
+image:https://github.com/sungha/reactjs-playground/workflows/build/badge.svg[link=https://github.com/sungha/reactjs-playground/actions?query=workflow%3Abuild]
 
 TIP: NOTHING SPECIAL. link:src/site/asciidoc/guide.adoc['Development Guide'].
 
