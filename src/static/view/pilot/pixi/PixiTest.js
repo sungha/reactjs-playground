@@ -6,12 +6,16 @@ import * as PIXI from 'pixi.js'
 PIXI.utils.skipHello()
 
 const Bunny = () => {
+  // eslint-disable-next-line
   const [x, setX] = useState(0)
+  // eslint-disable-next-line
   const [y, setY] = useState(0)
+  // eslint-disable-next-line
   const [rotation, setRotation] = useState(50)
 
   let i = 0
 
+  // eslint-disable-next-line
   useTick((delta) => {
     i += 1
 
