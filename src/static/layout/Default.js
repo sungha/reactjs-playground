@@ -4,7 +4,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import { Header } from './Header'
 import { Sidebar } from '../component/Sidebar'
 
-import { Index } from '../view/Index'
+import { Welcome } from '../view/Welcome'
 import { Profile } from '../view/Profile'
 import { ThemePreview } from './ThemePreview'
 import { Test } from './Test'
@@ -25,7 +25,7 @@ export const Default = (match) => {
           <div id="content">
             <BrowserRouter>
               <Switch>
-                <Route exact path={`${path}/`} component={Index} />
+                <Route exact path={`${path}/`} component={Welcome} />
                 <Route exact path={`${path}/profile`} component={Profile} />
                 <Route exact path={`${path}/theme`} component={ThemePreview} />
                 <Route exact path={`${path}/test`} component={Test} />
