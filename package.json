@@ -11,7 +11,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build && exit 0",
     "serve": "serve -s build",
-    "analyze": "cra-bundle-analyzer"
+    "analyze": "cra-bundle-analyzer --no-open -r ../target/site/bundle.html",
+    "eslint:report": "eslint src/static/ --ext .js --quiet --format node_modules/eslint-detailed-reporter/lib/detailed.js -o target/site/eslint.html && exit 0",
+    "package": "npm run analyze && npm run eslint:report && exit 0"
   },
   "proxy": "http://localhost:8080",
   "homepage": "https://sungha.kr",
@@ -68,6 +70,7 @@
     "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-config-prettier": "latest",
+    "eslint-detailed-reporter": "latest",
     "eslint-plugin-import": "latest",
     "eslint-plugin-import-helpers": "latest",
     "eslint-plugin-jsx-a11y": "latest",
@@ -144,8 +147,7 @@
       "location": "readonly",
       "document": "readonly",
       "navigator": "readonly",
-      "$": "readonly",
-      "jQuery": "readonly"
+      "$": "readonly"
     },
     "rules": {
       "react/jsx-filename-extension": [

@@ -424,7 +424,8 @@
           <executions>
             <execution>
               <id>auto-clean</id>
-              <phase>initialize</phase>
+<!--              <phase>initialize</phase>-->
+              <phase>prepare-package</phase>
               <goals>
                 <goal>clean</goal>
               </goals>
@@ -495,7 +496,7 @@
             </execution>
             <execution>
               <id>react-build</id>
-              <phase>generate-resources</phase>
+              <phase>prepare-package</phase>
               <goals>
                 <goal>npm</goal>
               </goals>
@@ -565,6 +566,26 @@
         </plugin>
 
         <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring.boot.version}</version>
+          <configuration>
+            <mainClass>${start-class}</mainClass>
+            <executable>true</executable>
+            <addResources>true</addResources>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.9.1</version>
@@ -575,6 +596,10 @@
           <artifactId>maven-jxr-plugin</artifactId>
           <version>3.0.0</version>
           <configuration>
+            <excludes>
+              <exclude>**/entity/Q*</exclude>
+            </excludes>
+            <linkJavadoc>false</linkJavadoc>
             <!--            <stylesheet>${project.build.directory}/static/site/</stylesheet>-->
           </configuration>
         </plugin>
@@ -594,41 +619,6 @@
             <failOnViolation>false</failOnViolation>
             <failsOnError>false</failsOnError>
             <enableRSS>false</enableRSS>
-          </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>taglist-maven-plugin</artifactId>
-          <version>2.4</version>
-          <configuration>
-            <xrefLocation>${project.build.directory}/site/xref</xrefLocation>
-            <tagListOptions>
-              <tagClasses>
-                <tagClass>
-                  <displayName>Todo Work</displayName>
-                  <tags>
-                    <tag>
-                      <matchString>TODO</matchString>
-                      <matchType>ignoreCase</matchType>
-                    </tag>
-                    <tag>
-                      <matchString>FIXME</matchString>
-                      <matchType>exact</matchType>
-                    </tag>
-                  </tags>
-                </tagClass>
-                <tagClass>
-                  <displayName>Deprecated</displayName>
-                  <tags>
-                    <tag>
-                      <matchString>@deprecated</matchString>
-                      <matchType>ignoreCase</matchType>
-                    </tag>
-                  </tags>
-                </tagClass>
-              </tagClasses>
-            </tagListOptions>
           </configuration>
         </plugin>
 
@@ -685,6 +675,41 @@
             <offline>true</offline>
             <outputDirectory>${project.build.directory}/site</outputDirectory>
             <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>taglist-maven-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>
+            <xrefLocation>${project.build.directory}/site/xref</xrefLocation>
+            <tagListOptions>
+              <tagClasses>
+                <tagClass>
+                  <displayName>Todo Work</displayName>
+                  <tags>
+                    <tag>
+                      <matchString>TODO</matchString>
+                      <matchType>ignoreCase</matchType>
+                    </tag>
+                    <tag>
+                      <matchString>FIXME</matchString>
+                      <matchType>exact</matchType>
+                    </tag>
+                  </tags>
+                </tagClass>
+                <tagClass>
+                  <displayName>Deprecated</displayName>
+                  <tags>
+                    <tag>
+                      <matchString>@deprecated</matchString>
+                      <matchType>ignoreCase</matchType>
+                    </tag>
+                  </tags>
+                </tagClass>
+              </tagClasses>
+            </tagListOptions>
           </configuration>
         </plugin>
 
@@ -747,6 +772,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>jxr</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
 
       <plugin>
@@ -762,6 +794,11 @@
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
       </plugin>
 
       <plugin>

@@ -25,7 +25,7 @@
     <menu name="Reference">
       <item name="Development Guide" href="./guide.html" />
     </menu>
-    <menu name="Java Reports">
+    <menu name="Backend Reports">
       <item name="Spotbugs" href="./spotbugs.html" />
       <item name="Checkstyle" href="./checkstyle.html" />
       <item name="PMD" href="./pmd.html" />
@@ -35,7 +35,7 @@
       <!--            <item name="Test Coverage" href="./jacoco/index.html"/>-->
       <item name="Source Xref" href="./xref/index.html" />
     </menu>
-    <menu name="Javascript Reports">
+    <menu name="Frontend Reports">
       <item name="Dependency Report" href="./bundle.html" />
       <item name="ESLint Report" href="./eslint.html" />
     </menu>
