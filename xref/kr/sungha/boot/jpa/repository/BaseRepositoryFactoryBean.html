@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>BaseRepositoryFactoryBean xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> kr.sungha.boot.jpa.repository;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.io.Serializable;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> javax.persistence.EntityManager;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> org.springframework.data.jpa.repository.JpaRepository;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> org.springframework.data.repository.core.support.RepositoryFactorySupport;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> * 기본 리파지토리 생성 빈.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> * @param &lt;R&gt; 리파지토리 인터페이스</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> * @param &lt;T&gt; 엔티티타입</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment"> * @param &lt;K&gt; PK 타입</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> BaseRepositoryFactoryBean&lt;R <strong class="jxr_keyword">extends</strong> JpaRepository&lt;T, K&gt;, T, K <strong class="jxr_keyword">extends</strong> Serializable&gt; <strong class="jxr_keyword">extends</strong> JpaRepositoryFactoryBean&lt;R, T, K&gt; {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>    <strong class="jxr_keyword">public</strong> <a name="BaseRepositoryFactoryBean" href="../../../../../kr/sungha/boot/jpa/repository/BaseRepositoryFactoryBean.html#BaseRepositoryFactoryBean">BaseRepositoryFactoryBean</a>(Class&lt;? <strong class="jxr_keyword">extends</strong> R&gt; repositoryInterface) {
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <strong class="jxr_keyword">super</strong>(repositoryInterface);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>    }
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>    @Override
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>    <strong class="jxr_keyword">protected</strong> RepositoryFactorySupport createRepositoryFactory(EntityManager entityManager) {
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> BaseRepositoryFactory&lt;T, K&gt;(entityManager);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>    }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2020 <a href="https://sungha.kr">steelheart*Rocks!</a>. All rights reserved.</div>
+</body>
+</html>
