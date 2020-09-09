@@ -19,6 +19,7 @@
     <!--        <menu ref="reports"/>-->
     <menu name="Project Reports">
       <item name="Summary" href="./summary.html" />
+      <item name="Team" href="./team.html" />
       <item name="Jar Dependencies" href="./dependencies.html" />
       <item name="Maven Plugins" href="./plugins.html" />
     </menu>

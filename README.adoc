@@ -4,4 +4,6 @@ image:https://github.com/sungha/reactjs-playground/workflows/build/badge.svg[lin
 
 TIP: NOTHING SPECIAL. link:src/site/asciidoc/guide.adoc['Development Guide'].
 
+TIP: NOTHING SPECIAL. link:https://sungha.github.io/reactjs-playground['Site Report'].
+
 

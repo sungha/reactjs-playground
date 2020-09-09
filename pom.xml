@@ -16,20 +16,36 @@
   <packaging>war</packaging>
 
   <name>REACTJS-PLAYGROUND</name>
-  <description>혼자 놀기</description>
+  <description>ReactJS 학습용 혼자 놀기 프로젝트</description>
+  <inceptionYear>2020</inceptionYear>
 
   <organization>
     <name>steelheart*Rocks!</name>
     <url>https://sungha.kr</url>
   </organization>
 
-  <url>http://localhost:7777</url>
-  <inceptionYear>2020</inceptionYear>
+  <url>https://github.com/sungha/${project.artifactId}</url>
+
+  <scm>
+    <url>https://github.com/sungha/${project.artifactId}</url>
+    <connection>scm:git:git@github.com:sungha/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:sungha/${project.artifactId}.git</developerConnection>
+  </scm>
 
   <issueManagement>
     <system>github</system>
-    <url>https://github.com/sungha/reactjs-playground/issues</url>
+    <url>https://github.com/sungha/${project.artifactId}/issues</url>
   </issueManagement>
+
+  <developers>
+    <developer>
+      <id>sungha</id>
+      <name>Sungha Jun</name>
+    </developer>
+  </developers>
+
+  <contributors>
+  </contributors>
 
   <properties>
     <java.version>1.8</java.version>
@@ -335,25 +351,6 @@
 
     <finalName>${project.artifactId}</finalName>
 
-    <resources>
-      <resource>
-        <directory>${project.basedir}/src/main/resources</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>**/*.yml</include>
-          <include>**/banner.txt</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>${project.basedir}/src/main/resources</directory>
-        <excludes>
-          <exclude>**/*.yml</exclude>
-          <exclude>**/banner.txt</exclude>
-        </excludes>
-      </resource>
-    </resources>
-
-
     <pluginManagement>
 
       <plugins>
@@ -396,6 +393,24 @@
         </plugin>
 
         <plugin>
+          <groupId>org.gaul</groupId>
+          <artifactId>modernizer-maven-plugin</artifactId>
+          <version>2.1.0</version>
+          <configuration>
+            <javaVersion>1.8</javaVersion>
+          </configuration>
+          <executions>
+            <execution>
+              <id>modernizer</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>modernizer</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>3.1.2</version>
@@ -424,13 +439,38 @@
           <executions>
             <execution>
               <id>auto-clean</id>
-<!--              <phase>initialize</phase>-->
-              <phase>prepare-package</phase>
+              <phase>initialize</phase>
               <goals>
                 <goal>clean</goal>
               </goals>
             </execution>
           </executions>
+        </plugin>
+
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <resources>
+              <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                  <include>**/*.yml</include>
+                  <include>**/banner.txt</include>
+                </includes>
+              </resource>
+              <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <excludes>
+                  <exclude>**/*.yml</exclude>
+                  <exclude>**/banner.txt</exclude>
+                </excludes>
+              </resource>
+            </resources>
+          </configuration>
         </plugin>
 
         <plugin>
@@ -552,6 +592,21 @@
 
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.2.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.2.0</version>
         </plugin>
@@ -562,6 +617,13 @@
           <version>3.3.1</version>
           <configuration>
             <failOnMissingWebXml>false</failOnMissingWebXml>
+            <webResources>
+              <resource>
+                <directory>build</directory>
+                <targetPath>/static</targetPath>
+                <filtering>false</filtering>
+              </resource>
+            </webResources>
           </configuration>
         </plugin>
 
@@ -573,6 +635,10 @@
             <mainClass>${start-class}</mainClass>
             <executable>true</executable>
             <addResources>true</addResources>
+            <includeSystemScope>true</includeSystemScope>
+            <noverify>true</noverify>
+            <outputDirectory>${project.basedir}</outputDirectory>
+            <finalName>${project.artifactId}.boot</finalName>
           </configuration>
         </plugin>
 
@@ -612,7 +678,7 @@
             <dependency>
               <groupId>com.puppycrawl.tools</groupId>
               <artifactId>checkstyle</artifactId>
-              <version>8.35</version>
+              <version>8.36</version>
             </dependency>
           </dependencies>
           <configuration>
@@ -713,6 +779,16 @@
           </configuration>
         </plugin>
 
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-publish-plugin</artifactId>
+          <version>3.0.0</version>
+          <configuration>
+            <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
+            <scmBranch>gh-pages</scmBranch>
+          </configuration>
+        </plugin>
+
       </plugins>
     </pluginManagement>
 
@@ -733,8 +809,18 @@
       </plugin>
 
       <plugin>
+        <groupId>org.gaul</groupId>
+        <artifactId>modernizer-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
       </plugin>
 
       <plugin>
@@ -757,9 +843,24 @@
         <artifactId>maven-install-plugin</artifactId>
       </plugin>
 
+      <!--      <plugin>-->
+      <!--        <groupId>org.apache.maven.plugins</groupId>-->
+      <!--        <artifactId>maven-source-plugin</artifactId>-->
+      <!--      </plugin>-->
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+      </plugin>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
       </plugin>
 
     </plugins>
@@ -811,8 +912,13 @@
             <inherited>false</inherited>
             <reports>
               <report>summary</report>
+              <report>team</report>
               <report>dependencies</report>
               <report>plugins</report>
+              <!--              <report>licenses</report>-->
+              <!--              <report>scm</report>-->
+              <!--              <report>issue-management</report>-->
+              <!--              <report>modules</report>-->
             </reports>
           </reportSet>
         </reportSets>

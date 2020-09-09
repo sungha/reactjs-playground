@@ -53,6 +53,7 @@ MANIFEST.MF
 *.ear
 *.tar.gz
 *.rar
+*.cpgz
 
 src/site/asciidoc/Users/
 
