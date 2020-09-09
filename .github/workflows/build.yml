@@ -28,4 +28,3 @@ jobs:
         run: mvn package -B -V -e "-Dstyle.color=always"
         env:
           MAVEN_OPTS: -Djansi.force=true
-

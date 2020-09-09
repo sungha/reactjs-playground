@@ -397,7 +397,8 @@
           <artifactId>modernizer-maven-plugin</artifactId>
           <version>2.1.0</version>
           <configuration>
-            <javaVersion>1.8</javaVersion>
+            <javaVersion>1.7</javaVersion>
+            <failOnViolations>false</failOnViolations>
           </configuration>
           <executions>
             <execution>
@@ -519,14 +520,14 @@
           <executions>
             <execution>
               <id>install-node-and-npm</id>
-              <phase>initialize</phase>
+              <phase>prepare-package</phase>
               <goals>
                 <goal>install-node-and-npm</goal>
               </goals>
             </execution>
             <execution>
               <id>npm-install</id>
-              <phase>initialize</phase>
+              <phase>prepare-package</phase>
               <goals>
                 <goal>npm</goal>
               </goals>
@@ -780,13 +781,26 @@
         </plugin>
 
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-scm-publish-plugin</artifactId>
-          <version>3.0.0</version>
+          <groupId>com.github.github</groupId>
+          <artifactId>site-maven-plugin</artifactId>
+          <version>0.12</version>
           <configuration>
-            <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
-            <scmBranch>gh-pages</scmBranch>
+            <server>github</server>
+            <message>Creating site</message>
+            <noJekyll>true</noJekyll>
+            <dryRun>true</dryRun>
+            <settings>
+            </settings>
           </configuration>
+          <executions>
+            <execution>
+              <id>create-github-pages</id>
+              <phase>site-deploy</phase>
+              <goals>
+                <goal>site</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
 
       </plugins>
@@ -859,8 +873,8 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-publish-plugin</artifactId>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
       </plugin>
 
     </plugins>
@@ -911,6 +925,7 @@
           <reportSet>
             <inherited>false</inherited>
             <reports>
+              <report>index</report>
               <report>summary</report>
               <report>team</report>
               <report>dependencies</report>
