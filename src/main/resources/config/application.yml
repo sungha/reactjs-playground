@@ -41,6 +41,7 @@ spring:
         registration:
           github:
           facebook:
+          twitter:
           google:
             scope: profile,email
           kakao:
@@ -52,6 +53,7 @@ spring:
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
             authorization-grant-type: authorization_code
             scope: name,email,profile
+          apple:
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize

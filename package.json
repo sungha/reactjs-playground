@@ -15,7 +15,6 @@
     "eslint:report": "eslint src/static/ --ext .js --quiet --format node_modules/eslint-detailed-reporter/lib/detailed.js -o target/site/eslint.html && exit 0",
     "package": "npm run analyze && npm run eslint:report && exit 0"
   },
-  "proxy": "http://localhost:8080",
   "homepage": "https://sungha.kr",
   "dependencies": {
     "@dicebear/avatars": "latest",

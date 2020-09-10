@@ -35,6 +35,15 @@ export const Login = () => {
         <Link to="/">Back to Home</Link>
 
         <div>
+          <div className="form-group">
+            <a className="btn btn-primary" href="/oauth2/authorization/github">
+              <i className="fa fa-github" />
+              Sign in with Github
+            </a>
+          </div>
+        </div>
+
+        <div>
           &copy; 2020 All Rights Reserved.
           <br />
           Built with Spring Boot 2.3.2, Bootstrap 4, React

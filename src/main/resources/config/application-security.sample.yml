@@ -9,6 +9,9 @@ spring:
           facebook:
             client-id: id
             client-secret: secret
+          twitter:
+            client-id: id
+            client-secret: secret
           google:
             client-id: id
             client-secret: secret
@@ -16,5 +19,8 @@ spring:
             client-id: id
             client-secert: secret
           naver:
+            client-id: id
+            client-secert: secret
+          apple:
             client-id: id
             client-secert: secret
