@@ -1,0 +1,35 @@
+= 개발 가이드
+Sungha Jun <sh@sungha.kr>
+{timestamp}
+:doctype: book
+:toc: left
+:toc-title: Table Of Contents
+:toclevels: 6
+:sectnums:
+:sectnumlevels: 6
+:sectlinks:
+:experimental:
+:source-highlighter: coderay
+:!coderay-linenums-mode: inline
+:icons: font
+:!iconfont-remote:
+:iconfont-name: report
+:linkcss:
+:stylesheet: ../vendors.css
+:docinfo: shared
+:docinfodir: ./
+:nofooter:
+:imagesdir: ./media
+:mermaid: ../../node_modules/.bin/mmdc
+
+
+//== 디자인 테스트
+//
+//include::test.adoc[leveloffset=+1]
+
+
+== 소개
+
+include::_docs/overview.adoc[leveloffset=+1]
+
+

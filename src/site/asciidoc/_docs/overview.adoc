@@ -1,0 +1,47 @@
+
+개발 및 운용 가이드
+
+
+
+== 개발 환경
+
+[cols="1,2,2", options="header"]
+|===
+|항목
+|개발환경
+|운영환경
+|비고
+
+|Operating System
+|Any
+|
+|
+
+|JDK
+|1.8+
+|1.7+
+|
+
+|Database
+|Oracle
+|Oracle 12c 이상
+|
+
+|Browser
+|IE Edge 또는 기타 최신 브라우저
+|IE11 이상 또는 기타 모던 브라우저
+|icon:chrome[] icon:firefox[] icon:safari[] icon:opera[] icon:internet-explorer[]
+|===
+
+
+== 주요 사용 기술
+
+. JAVA 7 (JDK 1.8+ 업데이트 권장)
+. Spring Boot 1.5.22.RELEASE (JAVA 7 환경에서 사용가능한 최상위 버전. 2019/08/01 기준으로 EOL)
+. MyBatis 3
+. Hibernate 5 (JPA 2.1)
+. Thymeleaf 3
+. Webpack 4
+. ES6+ (ECMA2015+) (with Babel 7)
+
+

@@ -1,0 +1,101 @@
+
+== 일반
+
+* _italic_, *bold*, +mono+, ^super^, ~sub~ (C) (R) (TM) -- ... -> <- => <=
+* 키보드 kbd:[Alt+F4] / kbd:[Ctrl+Alt+Del] / kbd:[Command+Option]
+* 메뉴 menu:File[Preference>Maven>Settings]
+* 버튼 btn:[OK] btn:[CANCEL] btn:[확인] btn:[취소]
+* 용어 ``C:/dev/maven``, ``dev-tools.zip``
+* 아이콘 icon:folder-open-o[], icon:file-text-o[], icon:square-o[], icon:check-square-o[], icon:toggle-off[], icon:toggle-on[]
+* 링크 http://google.com, http://google.com[Google Search]
+
+== 노트
+
+TIP: 유용한 팁, 부가정보 등.
+
+IMPORTANT: 반드시 체크해야 하는 사항
+
+.Optional Title
+WARNING: 주의해야 하는 사항
+
+
+.Optional Title
+NOTE: This is an example single-paragraph note.
+
+
+.Optional Title
+[NOTE]
+=====
+*NOTE* Block
+Use: multi-paragraph notes.
+=====
+
+
+=== 코드
+
+
+=== Single Line Code
+[source,perl]
+die 'connect: '.$dbh->errstr;
+
+=== Multi Line Code
+
+[source,java]
+----
+@SpringBootApplication
+public class Application {
+  public static void main(String[] args) {
+    new SpringApplicationBuilder().beanNameGenerator(new FqcnBeanNameGenerator()).sources(Application.class).build().run(args);
+  }
+}
+----
+
+
+[source,java,linenums]
+----
+@SpringBootApplication
+public class Application {
+  public static void main(String[] args) {
+    new SpringApplicationBuilder().beanNameGenerator(new FqcnBeanNameGenerator()).sources(Application.class).build().run(args);
+  }
+}
+----
+
+
+
+
+== 용어
+
+[horizontal]
+.Labeled horizontal
+Term 1:: Definition 1
+Term 2:: Definition 2
+Term 3:: Definition 3
+
+
+== 테이블
+
+=== 일반 테이블
+
+.An example table
+[options="header,footer"]
+|=======================
+|번호 |이름       |점수
+|1    |Item 1     |72
+|2    |Item 2     |66
+|합계 ||138
+|=======================
+
+=== CSV
+
+[format="csv"]
+[options="header",cols=",,s,,m"]
+|===========================
+ID,FName,LName,Address,Phone
+1,Vasya,Pupkin,London,+123
+2,X,Y,"A,B",45678
+|===========================
+
+
+
+

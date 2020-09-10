@@ -1,0 +1,3 @@
+:basedir: ../../..
+:imagesdir: ./media
+:java: ../../../src/main/java
