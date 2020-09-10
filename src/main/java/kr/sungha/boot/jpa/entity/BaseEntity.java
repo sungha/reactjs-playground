@@ -1,29 +1,20 @@
 package kr.sungha.boot.jpa.entity;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
+import kr.sungha.user.entity.User;
+
 import javax.persistence.MappedSuperclass;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
- * 작성자/작성일/수정자/수정일 공통 필드.
+ * 랜덤 ID 엔티티
  */
-@Getter
-@Setter
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public class BaseEntity implements Serializable {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public abstract class BaseEntity extends AbstractBaseEntity<User> {
 
-  private static final long serialVersionUID = 1L;
-
-  /** 아이디. */
-  @Id
-  @Column(length = 20, nullable = false, updatable = false)
-  private String id;
 
 }

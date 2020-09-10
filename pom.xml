@@ -529,7 +529,7 @@
                 <goal>npm</goal>
               </goals>
               <configuration>
-                <arguments>install</arguments>
+                <arguments>install --no-optional --loglevel=error</arguments>
               </configuration>
             </execution>
             <execution>
