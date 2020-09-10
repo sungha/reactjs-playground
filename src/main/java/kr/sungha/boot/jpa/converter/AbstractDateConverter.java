@@ -1,36 +1,33 @@
 package kr.sungha.boot.jpa.converter;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.persistence.AttributeConverter;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
-
-public abstract class AbstractDateConverter implements AttributeConverter<DateTime, String> {
+public abstract class AbstractDateConverter implements AttributeConverter<LocalDateTime, String> {
 
   private final DateTimeFormatter formatter;
 
   public AbstractDateConverter(String format) {
-    this.formatter = DateTimeFormat.forPattern(format);
+    this.formatter = DateTimeFormatter.ofPattern(format);
   }
 
   @Override
-  public String convertToDatabaseColumn(DateTime date) {
+  public String convertToDatabaseColumn(LocalDateTime date) {
     if (date == null) {
       return null;
     }
-    return date.toString(formatter);
+    return formatter.format(date);
   }
 
   @Override
-  public DateTime convertToEntityAttribute(String date) {
+  public LocalDateTime convertToEntityAttribute(String date) {
     if (date == null) {
       return null;
     }
 
-    return DateTime.parse(date, formatter);
+    return LocalDateTime.parse(date, formatter);
   }
 
 }

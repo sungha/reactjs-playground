@@ -328,12 +328,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-joda</artifactId>
-      <version>${jackson.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
       <version>${poi.version}</version>
@@ -397,13 +391,13 @@
           <artifactId>modernizer-maven-plugin</artifactId>
           <version>2.1.0</version>
           <configuration>
-            <javaVersion>1.7</javaVersion>
-            <failOnViolations>false</failOnViolations>
+            <javaVersion>1.8</javaVersion>
+            <failOnViolations>true</failOnViolations>
           </configuration>
           <executions>
             <execution>
               <id>modernizer</id>
-              <phase>verify</phase>
+              <phase>validate</phase>
               <goals>
                 <goal>modernizer</goal>
               </goals>

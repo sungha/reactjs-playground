@@ -2,6 +2,7 @@ package kr.sungha.boot.jpa.entity;
 
 import kr.sungha.boot.jpa.converter.YmdhmsWithDashConverter;
 
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.EntityListeners;
@@ -9,7 +10,6 @@ import javax.persistence.MappedSuperclass;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -29,24 +29,24 @@ public class AuditingEntity extends BaseEntity {
 
   /** 작성자. */
   @CreatedBy
-  @Column(length = 8)
-  private String frtuser;
+  @Column
+  private String creator;
 
   /** 작성일. */
   @CreatedDate
   @Column(length = 20)
   @Convert(converter = YmdhmsWithDashConverter.class)
-  private DateTime frtdt;
+  private LocalDateTime created;
 
   /** 수정자. */
   @LastModifiedBy
-  @Column(length = 8)
-  private String lstuser;
+  @Column
+  private String modifier;
 
   /** 수정일. */
   @LastModifiedDate
   @Column(length = 20)
   @Convert(converter = YmdhmsWithDashConverter.class)
-  private DateTime lstdt;
+  private LocalDateTime modified;
 
 }
