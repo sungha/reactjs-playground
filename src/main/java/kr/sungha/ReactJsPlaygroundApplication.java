@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;
+import org.springframework.lang.NonNull;
 
 
 @SpringBootApplication
@@ -27,8 +28,13 @@ public class ReactJsPlaygroundApplication {
 
     new SpringApplicationBuilder().beanNameGenerator(new AnnotationBeanNameGenerator() {
       @Override
-      protected String buildDefaultBeanName(BeanDefinition definition) {
-        return definition.getBeanClassName();
+      @NonNull
+      protected String buildDefaultBeanName(@NonNull BeanDefinition definition) {
+        String name = definition.getBeanClassName();
+        if (name == null) {
+          throw new IllegalStateException();
+        }
+        return name;
       }
     }).sources(ReactJsPlaygroundApplication.class).run(args);
   }
