@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+#parse( "site-macros.vm" )
+#set ( $skipGenerationDate = 'true' == $decoration.getCustomValue( 'fluidoSkin.skipGenerationDate' ) )
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>$title</title>
+    <link rel="stylesheet" type="text/css" href="../vendors.css" />
+    <link rel="stylesheet" type="text/css" href="./report.css" />
+  </head>
+  <body class="report book toc2 toc-left">
+    <div id="header">
+      <h1>$title</h1>
+      <div class="details">
+        <span id="author" class="author">Sungha Jun</span><br>
+        <span id="email" class="email"><a href="mailto:sh@sungha.kr">sh@sungha.kr</a></span><br>
+        <span id="revdate">2020-08-02 08:49 UTC</span>
+      </div>
+      <div id="toc" class="toc2">
+        <div id="toctitle">Table Of Contents</div>
+        <ul class="sectlevel1">
+#*      *##mainMenu( $decoration.body.menus )
+        </ul>
+      </div>
+    </div>
+    <div id="content">
+#*        *#$bodyContent
+    </div>
+  </body>
+</html>
+
+
+
+#**##set ( $sideBarEnabled = 'false' != $decoration.getCustomValue( 'fluidoSkin.sideBarEnabled' ) )
+#**##set ( $searchEnabled = $decoration.getCustomChild( 'fluidoSkin.googleSearch' )
+             && ( $decoration.getCustomValue( 'fluidoSkin.googleSearch.sitesearch' ) || $project.url ) )
+
+#**##if ( $sideBarEnabled )
+    <div class="container-fluid">
+#**##else
+    <div class="container">
+#**##end
+      <header>
+        <div id="banner">
+          <div class="pull-left">##
+#*        *##if( $decoration.bannerLeft )
+#*          *##banner( $decoration.bannerLeft "bannerLeft" )
+#*        *##else
+#*        *### MSKINS-32
+            <h1>##
+#*          *##if( $project.name && $project.name != '' )
+#*            *#$project.name
+#*          *##else
+#*            *#$project.artifactId
+#*          *##end
+#*        *#</h1>##
+#*        *##end
+#*      *#</div>
+          <div class="pull-right">#banner( $decoration.bannerRight "bannerRight" )</div>
+          <div class="clear"><hr/></div>
+        </div>
+
+        <div id="breadcrumbs">
+          <ul class="breadcrumb">
+#*        *##publishDate( "left" $decoration.publishDate $decoration.version )
+#*        *##publishDate( "right" $decoration.publishDate $decoration.version )
+##
+#*        *### MSITE-44
+#*        *##if ( !$topBarEnabled
+                && $decoration.body.links
+                && $decoration.body.links.size() > 0 )
+#*          *##links( $decoration.body.links )
+#*        *##end
+          </ul>
+        </div>
+      </header>
+##
+#*    *##if ( $sideBarEnabled )
+#*      *##set ( $leftColumnClass = $decoration.getCustomValue( 'fluidoSkin.leftColumnClass', 'span2' ) )
+##
+      <div class="row-fluid">
+        <header id="leftColumn" class="$leftColumnClass">
+          <nav class="well sidebar-nav">
+#*      *##publishDate( "navigation-top" $decoration.publishDate $decoration.version )
+#*      *##mainMenu( $decoration.body.menus )
+#*      *##publishDate( "navigation-bottom" $decoration.publishDate $decoration.version )
+          </nav>
+        </header>
+#*    *##end
+##
+#*    *##set ( $bodyColumnClass = $decoration.getCustomValue( 'fluidoSkin.bodyColumnClass', 'span10' ) )
+##
+        <main id="bodyColumn" #if ( $sideBarEnabled ) class="$bodyColumnClass" #end>
+#*      *##if ( $title && $title.endsWith( "Project License" ) )
+#*        *#$bodyContent
+#*      *##else
+#*        *##if ( 'true' == $decoration.getCustomValue( 'fluidoSkin.sourceLineNumbersEnabled' ) )
+#*          *##set ( $sourceStyle = "prettyprint linenums" )
+#*        *##else
+#*          *##set ( $sourceStyle = "prettyprint" )
+#*        *##end
+##
+#*        *#$bodyContent.replaceAll( "<div class=${esc.q}source${esc.q}>(\r?\n)?<pre>", "<div class=${esc.q}source${esc.q}><pre class=${esc.q}$sourceStyle${esc.q}>" ).replaceAll( "class=${esc.q}bodyTable${esc.q}", "class=${esc.q}table table-striped${esc.q}" )
+#*      *##end
+        </main>
+#*    *##if ( $sideBarEnabled )
+      </div>
+#*    *##end
+    </div>
+    <hr/>
+    <footer>
+#*  *##if ( $sideBarEnabled )
+      <div class="container-fluid">
+#*  *##else
+      <div class="container">
+#*  *##end
+#*    *##if ( $sideBarEnabled )
+        <div class="row-fluid">
+#*    *##else
+        <div class="row">
+#*    *##end
+#*    *##if ( $decoration.body.footer )
+#*      *#$render.eval( $decoration.body.footer )
+#*    *##else
+#*      *##if ( $decoration.getCustomChild( 'fluidoSkin.copyrightClass' ) )
+#*        *##set ( $copyrightClass = ' class="' + $decoration.getCustomValue( 'fluidoSkin.copyrightClass' ) + '"' )
+#*      *##end
+            <p$!copyrightClass>&#169;#copyright()#publishDate( "bottom" $decoration.publishDate $decoration.version )</p>
+#*    *##end
+        </div>
+##
+##
+#*    *##ohloh()
+      </div>
+    </footer>
+#**##piwik()
+
+    <script type="text/javascript" src="../vendors.js"></script>
+    <script type="text/javascript" src="./report.js"></script>
+
+  </body>
+</html>

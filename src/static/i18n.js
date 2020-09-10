@@ -22,14 +22,10 @@ const lang = match && match[1] ? match[1] : defaultLanguage
 i18next
 .use(initReactI18next)
 .init({
-  resources,
-  fallbackLng: 'en',
-  lng: lang,
-  debug: false,
-  interpolation: {
+  resources, fallbackLng: 'en', lng: lang, debug: false, interpolation: {
     escapeValue: false
   }
-})
+}).then()
 
 i18next.on('languageChanged', (lng) => {
   console.log(`language changed to [${lng}]`)
@@ -37,23 +33,18 @@ i18next.on('languageChanged', (lng) => {
 })
 
 i18next.available = Object.entries(resources).map(([k, v]) => ({
-  code: k,
-  name: v.name
+  code: k, name: v.name
 }))
 
 i18next.selected = {
-  code: i18next.language,
-  name: resources[i18next.language].name
+  code: i18next.language, name: resources[i18next.language].name
 }
 
 i18next.path = path
 
-export {
-  languages,
-  pattern,
-  path,
-  useTranslation
-}
 export default i18next
+export {
+  languages, pattern, path, useTranslation
+}
 
 

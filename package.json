@@ -66,7 +66,7 @@
     "@babel/plugin-syntax-dynamic-import": "latest",
     "babel-eslint": "latest",
     "cra-bundle-analyzer": "latest",
-    "eslint": "latest",
+    "eslint": "6.8.0",
     "eslint-config-airbnb": "latest",
     "eslint-config-prettier": "latest",
     "eslint-detailed-reporter": "latest",
@@ -203,6 +203,7 @@
     "trailingComma": "none",
     "singleQuote": true,
     "jsxBracketSameLine": true,
+    "arrow-parens": "always",
     "tabWidth": 2,
     "printWidth": 100
   }

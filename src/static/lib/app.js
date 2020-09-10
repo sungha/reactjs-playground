@@ -1,2 +1,15 @@
-export const json = require(`./json`)
+import json from './json'
+
+const app = {}
+export default app
+
+export {
+  json
+}
+
+
+app.x = (i) => i
+
+
+
 
