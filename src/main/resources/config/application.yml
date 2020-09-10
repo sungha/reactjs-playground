@@ -40,25 +40,15 @@ spring:
       client:
         registration:
           github:
-            client-id: id
-            client-secret: secret
           facebook:
-            client-id: id
-            client-secret: secret
           google:
-            client-id: id
-            client-secret: secret
             scope: profile,email
           kakao:
             client-name: Kakao
-            client-id: 29fb8a55f76c42b3f0284a9230ace10b
-            client-secert:
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
             authorization-grant-type: authorization_code
           naver:
             client-name: Naver
-            client-id: 29fb8a55f76c42b3f0284a9230ace10b
-            client-secert:
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
             authorization-grant-type: authorization_code
             scope: name,email,profile
@@ -93,8 +83,6 @@ management:
 #          - env
 #          - configprops
 
-app:
-  built: @timestamp@
 
 
 

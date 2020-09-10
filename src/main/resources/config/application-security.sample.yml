@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: id
+            client-secret: secret
+          facebook:
+            client-id: id
+            client-secret: secret
+          google:
+            client-id: id
+            client-secret: secret
+          kakao:
+            client-id: id
+            client-secert: secret
+          naver:
+            client-id: id
+            client-secert: secret

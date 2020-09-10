@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "app.built",
+      "type": "java.lang.String",
+      "description": "Description for app.built."
+  }
+] }

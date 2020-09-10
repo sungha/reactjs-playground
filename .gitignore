@@ -56,7 +56,7 @@ MANIFEST.MF
 *.cpgz
 
 src/site/asciidoc/Users/
-
+src/main/resources/config/application-security.yml
 
 !.gitignore
 !.github
