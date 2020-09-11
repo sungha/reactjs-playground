@@ -4,7 +4,6 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import { Header } from './Header'
 import { Sidebar } from '../component/Sidebar'
 
-import { Profile } from '../view/Profile'
 import { ThemePreview } from './ThemePreview'
 import { Test } from './Test'
 import { PixiTest } from '../view/pilot/pixi/PixiTest'
@@ -18,10 +17,10 @@ const loading = (
 )
 
 const Welcome = React.lazy(() => import('../view/Welcome'))
+const Profile = React.lazy(() => import('../view/Profile'))
 
 
-export const Default = (match) => {
-  console.log(match)
+export default () => {
 
   return (
     <>
@@ -34,7 +33,7 @@ export const Default = (match) => {
               <React.Suspense fallback={loading}>
                 <Switch>
                   <Route exact path={`${path}/`} name="welcome" component={() => <Welcome />} />
-                  {/* <Route exact path={`${path}/profile`} component={Profile} /> */}
+                  <Route exact path={`${path}/profile`} component={Profile} />
                   {/* <Route exact path={`${path}/theme`} component={ThemePreview} /> */}
                   {/* <Route exact path={`${path}/test`} component={Test} /> */}
                   {/* <Route exact path={`${path}/pilot/pixi`} component={PixiTest} /> */}
@@ -48,7 +47,4 @@ export const Default = (match) => {
   )
 }
 
-Default.propTypes = {
-  match: require('react-router-prop-types').match.isRequired
-}
 

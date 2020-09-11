@@ -1,12 +1,12 @@
 import React, { lazy } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-// import {path} from './i18n'
+import { path } from './i18n'
 
 // import { Test } from './view/Test'
 const Test = lazy(() => import('./view/Test'))
 const Login = lazy(() => import('./layout/Login'))
-// const Default = React.lazy(() => import('./layout/Default'))
+const Default = React.lazy(() => import('./layout/Default'))
 
 
 
@@ -23,8 +23,8 @@ export const Root = () => {
   return (
     <BrowserRouter>
       <React.Suspense fallback={Loading}>
-        <Route exact path="/" render={() => <Test />} />
-        <Route exact path="/login" render={() => <Login />} />
+        <Route exact path={`${path}/`} render={() => <Default />} />
+        <Route exact path={`${path}/login`} render={() => <Login />} />
         {/* <Route exact path={`${path}/`} component={Default} /> */}
         {/* <Route exact path={`${path}/profile`} component={Default} /> */}
         {/* <Route exact path={`${path}/theme`} component={Default} /> */}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 // import * as app from '../lib/app'
 
-export const Welcome = () => {
+export default () => {
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
 

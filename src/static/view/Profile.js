@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 // import { Button, FormControl, InputGroup } from 'react-bootstrap'
 
-export const Profile = () => {
+export default () => {
   return (
     <>
       Profile
