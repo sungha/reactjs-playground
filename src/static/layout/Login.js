@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Container, Form } from 'react-bootstrap'
 
-export const Login = () => {
+export default () => {
 
   return (
     <>

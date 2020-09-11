@@ -112,22 +112,5 @@
     })
   })()
 </script>
-<script>
-  window.frontend = window.frontend || {
-    mode: 'dark'
-  }
-  const ua = window.navigator.userAgent
-  const msie = ua.indexOf('MSIE ')
-
-  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv:11\./)) {
-    console.log('\nSUNGHA.KR v2020.08 (https://sungha.kr/)\n')
-  } else {
-    console.log(...[`\n%c %c  SUNGHA.KR v2020.08  %c %c  https://sungha.kr/  DARK MODE: ${window.frontend.mode === 'dark'}\n`, 'background: #eee; padding:3px 0;', 'color: #030307; background: #b3ff00; padding:3px 0;', 'background: #eee; padding:3px 0;', 'background: transparent; padding:3px 0;'])
-    window.matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', (e) => {
-      window.frontend.mode = e.matches ? 'dark' : 'light'
-    })
-  }
-</script>
 </body>
 </html>

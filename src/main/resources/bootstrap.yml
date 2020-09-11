@@ -21,5 +21,3 @@ spring:
             - classpath:/config
             - classpath:/profile
             - file:///profile
-app:
-  built: @timestamp@

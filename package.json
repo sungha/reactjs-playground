@@ -2,7 +2,13 @@
   "name": "sungha.kr",
   "version": "1.0.0",
   "private": true,
-  "author": "Sungha Jun <sh@sungha.kr> (https://sungha.kr)",
+  "author": {
+    "name": "Sungha Jun",
+    "url": "https://sungha.kr",
+    "email": "sh@sungha.kr",
+    "github": "https://github.com/sungha"
+  },
+  "contributors": [],
   "license": "MIT",
   "engines": {
     "node": ">=12.18.3"
@@ -17,6 +23,7 @@
   },
   "homepage": "https://sungha.kr",
   "dependencies": {
+    "@coreui/icons": "latest",
     "@dicebear/avatars": "latest",
     "@dicebear/avatars-human-sprites": "latest",
     "@openfonts/nanum-gothic-coding_korean": "latest",
