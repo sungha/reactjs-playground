@@ -24,23 +24,21 @@ export default () => {
 
   return (
     <>
-      <div id="app">
-        <Sidebar />
-        <div id="body">
-          <Header />
-          <div id="content">
-            <BrowserRouter>
-              <React.Suspense fallback={loading}>
-                <Switch>
-                  <Route exact path={`${path}/`} name="welcome" component={() => <Welcome />} />
-                  <Route exact path={`${path}/profile`} component={Profile} />
-                  {/* <Route exact path={`${path}/theme`} component={ThemePreview} /> */}
-                  {/* <Route exact path={`${path}/test`} component={Test} /> */}
-                  {/* <Route exact path={`${path}/pilot/pixi`} component={PixiTest} /> */}
-                </Switch>
-              </React.Suspense>
-            </BrowserRouter>
-          </div>
+      <Sidebar />
+      <div id="body">
+        <Header />
+        <div id="content">
+          <BrowserRouter>
+            <React.Suspense fallback={loading}>
+              <Switch>
+                <Route exact path={`${path}/`} name="welcome" component={() => <Welcome />} />
+                <Route exact path={`${path}/profile`} component={Profile} />
+                {/* <Route exact path={`${path}/theme`} component={ThemePreview} /> */}
+                {/* <Route exact path={`${path}/test`} component={Test} /> */}
+                {/* <Route exact path={`${path}/pilot/pixi`} component={PixiTest} /> */}
+              </Switch>
+            </React.Suspense>
+          </BrowserRouter>
         </div>
       </div>
     </>
