@@ -6,7 +6,7 @@ class GlobalState {
   constructor(reducer, initialState = {}) {
     this.reducer = reducer
     this.state = initialState
-    this.devTools = typeof window !== 'undefined' && window?.__REDUX_DEVTOOLS_EXTENSION__?.connect()
+    this.devTools = typeof window !== 'undefined' && window?.__REDUX_DEVTOOLS_EXTENSION__?.connect() // eslint-disable-line no-underscore-dangle
   }
 
   listen(listener) {
